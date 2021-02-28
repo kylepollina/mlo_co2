@@ -211,6 +211,7 @@ def weekly_mean(
         "data": {
             "yr": [],
             "mon": [],
+            "day": [],
             "decimal": [],
             "ppm": [],
             "#days": [],
