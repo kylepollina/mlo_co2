@@ -24,7 +24,7 @@ def monthly_mean(
     start: Optional[datetime] = None,
     end: Optional[datetime] = None
 ) -> dict:
-    """ TODO Get the monthly mean """
+    """ Get the monthly mean """
 
     if start and not isinstance(start, datetime):
         raise TypeError("Start must be a datetime object")
