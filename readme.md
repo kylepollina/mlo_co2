@@ -5,7 +5,9 @@ You can access this data here: [https://www.esrl.noaa.gov/gmd/ccgg/trends/mlo.ht
 
 ## Installation
 
-`pip install mlo_co2`
+```
+pip install git+https://github.com/kylepollina/mlo_co2.git
+```
 
 ## Features
 
