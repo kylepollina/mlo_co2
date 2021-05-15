@@ -1,13 +1,12 @@
 #################################################
 # Mauna Loa CO2 data scraper
 #################################################
-# {License_info}
+# {License_info} TODO
 #################################################
 # Author: Kyle Pollina
 # Copyright: Copyright 2021, https://github.com/kylepollina/ml_co2
-# Credits: [{credit_list}]
-# License: {license}
-# Version: {mayor}.{minor}.{rel}
+# License: TODO
+# Version: TODO
 # Maintainer: {maintainer}
 # Email: kylepollina@pm.me
 # Status: In Development
@@ -24,7 +23,20 @@ def monthly_mean(
     start: Optional[datetime] = None,
     end: Optional[datetime] = None
 ) -> dict:
-    """ Get the monthly mean """
+    """ Get the monthly mean data
+    -----------------------------
+
+    Data from March 1958 through April 1974 have been obtained by C. David Keeling
+    of the Scripps Institution of Oceanography (SIO) and were obtained from the
+    Scripps website (scrippsco2.ucsd.edu).
+    Monthly mean CO2 constructed from daily mean values
+    Scripps data downloaded from http://scrippsco2.ucsd.edu/data/atmospheric_co2
+    Monthly values are corrected to center of month based on average seasonal
+    cycle. Missing days can be asymmetric which would produce a high or low bias.
+    Missing months have been interpolated, for NOAA data indicated by negative stdev
+    and uncertainty. We have no information for SIO data about Ndays, stdv, unc
+    so that they are also indicated by negative numbers
+    """
 
     if start and not isinstance(start, datetime):
         raise TypeError("Start must be a datetime object")
@@ -85,7 +97,24 @@ def annual_mean(
     start: Optional[datetime] = None,
     end: Optional[datetime] = None
 ) -> dict:
-    """ TODO """
+    """Get the annual mean data
+    ----------------------------
+
+    Data from March 1958 through April 1974 have been obtained by C. David Keeling
+    of the Scripps Institution of Oceanography (SIO) and were obtained from the
+    Scripps website (scrippsco2.ucsd.edu).
+
+    The estimated uncertainty in the annual mean is the standard deviation
+    of the differences of annual mean values determined independently by
+    NOAA/ESRL and the Scripps Institution of Oceanography.
+
+    NOTE: In general, the data presented for the last year are subject to change,
+    depending on recalibration of the reference gas mixtures used, and other quality
+    control procedures. Occasionally, earlier years may also be changed for the same
+    reasons.  Usually these changes are minor.
+
+    CO2 expressed as a mole fraction in dry air, micromol/mol, abbreviated as ppm
+    """
 
     if start and not isinstance(start, datetime):
         raise TypeError("Start must be a datetime object")
@@ -136,7 +165,25 @@ def annual_mean_increase(
     start: Optional[datetime] = None,
     end: Optional[datetime] = None
 ) -> dict:
-    """ TODO """
+    """
+    Data from March 1958 through April 1974 have been obtained by C. David Keeling
+    of the Scripps Institution of Oceanography (SIO) and were obtained from the
+    Scripps website (scrippsco2.ucsd.edu).
+
+    Annual CO2 mole fraction increase (ppm) from Jan 1 through Dec 31.
+
+    The uncertainty in the Mauna Loa annual mean growth rate is estimated
+    from the standard deviation of the differences between monthly mean
+    values determined independently by the Scripps Institution of Oceanography
+    and by NOAA/ESRL.
+
+    NOTE: In general, the data presented for the last year are subject to change,
+    depending on recalibration of the reference gas mixtures used, and other quality
+    control procedures. Occasionally, earlier years may also be changed for the same
+    reasons.  Usually these changes are minor.
+
+    CO2 expressed as a mole fraction in dry air, micromol/mol, abbreviated as ppm
+    """
 
     if start and not isinstance(start, datetime):
         raise TypeError("Start must be a datetime object")
@@ -187,8 +234,13 @@ def weekly_mean(
     start: Optional[datetime] = None,
     end: Optional[datetime] = None
 ) -> dict:
-    """ TODO """
-
+    """
+    NOTE: DATA FOR THE LAST SEVERAL MONTHS ARE PRELIMINARY, ARE STILL SUBJECT
+    TO QUALITY CONTROL PROCEDURES.
+    NOTE: The week "1 yr ago" is exactly 365 days ago, and thus does not run from
+    Sunday through Saturday. 365 also ignores the possibility of a leap year.
+    The week "10 yr ago" is exactly 10*365 days +3 days (for leap years) ago.
+    """
     if start and not isinstance(start, datetime):
         raise TypeError("Start must be a datetime object")
     if end and not isinstance(end, datetime):
