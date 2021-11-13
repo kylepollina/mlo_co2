@@ -1,7 +1,7 @@
 from pathlib import Path
 from setuptools import setup
 
-VERSION = '0.2'
+VERSION = '0.3'
 
 # The directory containing this file
 cur_dir = Path(__file__).parent
@@ -24,6 +24,7 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
     ],
+    python_requires='>=3.8',
     packages=['mlo_co2'],
     include_package_data=True,
     install_requires=['requests'],
